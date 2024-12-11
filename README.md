@@ -93,6 +93,8 @@ http://<server-ip>:8080/CurrencyConverterApp/
 * Get the vesion from jfrog page [refer here](https://jfrog.com/download-legacy/)
 
 ```bash
+sudo apt update
+sudo apt install openjdk-11-jdk net-tools -y
 wget https://releases.jfrog.io/artifactory/artifactory-pro-debs/pool/jfrog-artifactory-pro/jfrog-artifactory-pro-7.55.2.deb?_gl=1*1dq24qp*_gcl_aw*R0NMLjE3MzM4MTE3MzcuQ2owS0NRaUF4OXE2QmhDREFSSXNBQ3dVeHU3bGRGbkxGRXpTa0ZVeVRzWXo3bEI1Wmp2ZTFOdkwzeTdxT1dDTGVpTUJSdzBUVFpyYjd0WWFBa2JrRUFMd193Y0I.*_gcl_au*MTgzNjY2NTQ4NS4xNzMzODA2NjU4*FPAU*MTgzNjY2NTQ4NS4xNzMzODA2NjU4*_ga*MjAxNjE1MzE3NC4xNzE4MjY1Nzk3*_ga_SQ1NR9VTFJ*MTczMzgyMjYzMS4xMC4xLjE3MzM4MjI5NjMuMC4wLjE5NTIxNjU2MTc.*_fplc*S3RpOVB4NXZMdmxueDRkaDd0SndtJTJGWWMzZk8yJTJCaVY3V3dnejFLbWozUW9aeGdiUG5vJTJCMjd1em5ER1RoTmpRSmVOWVl5NVNpdkhQNmNUb1FUMWlmNkVicEZjUWNkVkx0cjd0Sk81Wm14TSUyQnBNdVpWa2d5SlhwN3ZFVGhMSHclM0QlM0Q.
 mv 'jfrog-artifactory-pro-7.55.2.deb?_gl=1*1dq24qp*_gcl_aw*R0NMLjE3MzM4MTE3MzcuQ2owS0NRaUF4OXE2QmhDREFSSXNBQ3dVeHU3bGRGbkxGRXpTa0ZVeVRzWXo3bEI1Wmp2ZTFOdkwzeTdxT1dDTGVpTUJSdzBUVFpyYjd0WWFBa2JrRUFMd193Y0I.*_gcl_au*MTgzNjY2NTQ4NS4xNzMzODA2NjU4' jfrog-artifactory-pro-7.55.2.deb
 sudo dpkg -i jfrog-artifactory-pro-7.55.2.deb
@@ -102,4 +104,25 @@ sudo systemctl status artifactory.service
 ```
 
 * Provide default admin username as **“admin”** and password as **“password”** then click on the Login button. You will see the Getting Started page.
+
+![preview](images/java2.png)
+![preview](images/java3.png)
+
 * As of now try to use free trail- self hosted and get 30 days free trail where you get the license key 
+
+![oreview](images/java5.png)
+
+* My build tool is ant but jfrog is not providing ant so I selected Generic repository.
+
+![preview](images/java6.png)
+![preview](images/java4.png)
+
+* We can create the repository after login into the jfrog.
+
+![preview](images/java7.png)
+![preview](images/java8.png)
+![preview](images/java9.png)
+![preview](images/java10.png)
+
+* Now, In build.xml file we have to add details of this repository of jfrog artifactory so while building the artifact that artifact will store in the jfrog artifactory.
+* 

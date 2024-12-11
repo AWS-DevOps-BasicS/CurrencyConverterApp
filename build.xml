@@ -10,8 +10,8 @@
     <property name="servlet-api" value="lib/jakarta.servlet-api-5.0.0.jar"/>
 
     <!-- Define Artifactory properties -->
-    <property name="artifactory.url" value="http://3.95.201.116:8082/artifactory"/>
-    <property name="artifactory.repo" value="ant-repo-generic-local" />  <!-- Updated to the correct repo name -->
+    <property name="artifactory.url" value="http://3.83.160.3:8082//artifactory"/>
+    <property name="artifactory.repo" value="currency-ant-repo-generic-local" />  <!-- Updated to the correct repo name -->
     <property name="artifactory.username" value="admin"/>
     <property name="artifactory.password" value="Admin@123"/>
     <property name="artifact.file" value="${dist.dir}/CurrencyConverterApp.war"/>
