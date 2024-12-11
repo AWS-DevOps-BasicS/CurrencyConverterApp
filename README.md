@@ -125,4 +125,4 @@ sudo systemctl status artifactory.service
 ![preview](images/java10.png)
 
 * Now, In build.xml file we have to add details of this repository of jfrog artifactory so while building the artifact that artifact will store in the jfrog artifactory.
-* 
+* I tried to do the process with ant as build tool but jfrog is not supporting and involving maven. SO instead of that I will use maven as build tool.
