@@ -1,4 +1,4 @@
-<project name="CurrencyConverterApp" basedir="." default="dist">
+<project name="CurrencyConverterApp" basedir="." default="deploy-maven">
 
     <!-- Define properties for directories -->
     <property name="src.dir" value="src/main/java"/>
@@ -10,12 +10,12 @@
     <property name="servlet-api" value="lib/jakarta.servlet-api-5.0.0.jar"/>
 
     <!-- Define Artifactory properties -->
-    <property name="artifactory.url" value="http://3.83.160.3:8082//artifactory"/>
-    <property name="artifactory.repo" value="currency-ant-repo-generic-local" />  <!-- Updated to the correct repo name -->
+    <property name="artifactory.url" value="http://3.83.160.3:8082/artifactory"/>
+    <property name="artifactory.repo" value="currency-ant-repo-generic-local"/>
     <property name="artifactory.username" value="admin"/>
     <property name="artifactory.password" value="Admin@123"/>
     <property name="artifact.file" value="${dist.dir}/CurrencyConverterApp.war"/>
-    <property name="artifact.target" value="CurrencyConverterApp-${revision}.war" />
+    <property name="artifact.target" value="CurrencyConverterApp-1.0.0.war"/>
 
     <!-- Clean target: removes any previous builds -->
     <target name="clean">
@@ -58,21 +58,19 @@
     <!-- Dist target: invokes package and creates the final artifact -->
     <target name="dist" depends="package"/>
 
-    <!-- Deploy target: Deploys the artifact to Artifactory -->
-    <target name="deploy" depends="dist">
-        <echo message="Deploying to Artifactory..."/>
-        <ant antfile="${basedir}/build.xml" target="deploy-artifact"/>
-    </target>
-
-    <!-- Deploy Artifact to Artifactory -->
-    <target name="deploy-artifact">
-        <echo message="Deploying artifact ${artifact.file} to ${artifactory.url}/${artifactory.repo}"/>
-        <artifact.deploy
-            url="${artifactory.url}/artifactory/${artifactory.repo}"
-            username="${artifactory.username}"
-            password="${artifactory.password}"
-            file="${artifact.file}"
-            target="${artifact.target}" />
+    <!-- Deploy using Maven -->
+    <target name="deploy-maven" depends="dist">
+        <echo message="Deploying to Artifactory using Maven..."/>
+        <exec executable="mvn">
+            <arg value="deploy:deploy-file"/>
+            <arg value="-Dfile=${artifact.file}"/>
+            <arg value="-DrepositoryId=artifactory"/>
+            <arg value="-Durl=http://3.83.160.3:8082/artifactory/currency-ant-repo-generic-local"/>
+            <arg value="-DgroupId=com.example"/>
+            <arg value="-DartifactId=CurrencyConverterApp"/>
+            <arg value="-Dversion=1.0.0"/>
+            <arg value="-Dpackaging=war"/>
+        </exec>
     </target>
 
 </project>
